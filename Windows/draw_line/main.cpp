@@ -84,8 +84,6 @@ INT WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		}
 
 		glClear(GL_COLOR_BUFFER_BIT);
-		//设置颜色
-		glColor4ub(255, 0, 255, 255);
 		//设置线的宽度
 		glLineWidth(4.0f);
 		/*1、必须是两个独立的点，才能连成一条线
@@ -101,9 +99,13 @@ INT WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		glVertex3f(0.0, 5.0f, -10.0f);
 		glEnd();*/
 		/*3、不会成环*/
+		//可以绘制出颜色渐变的效果
 		glBegin(GL_LINE_STRIP);
+		glColor4ub(255,0,0,255);
 		glVertex3f(0.0f, 0.0f, -10.0f);
+		glColor4ub(0,255,0,255);
 		glVertex3f(-5.0f, 0.0f, -10.0f);
+		glColor4ub(0,0,255,255);
 		glVertex3f(0.0, 5.0f, -10.0f);
 		glEnd();
 		SwapBuffers(dc);
