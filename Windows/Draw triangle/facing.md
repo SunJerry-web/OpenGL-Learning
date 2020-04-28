@@ -23,9 +23,20 @@
 
 在前面的绘制三角形的代码中，我们输入了3个点的坐标(0.0,0.0)，(-5.0,0.0)，(0.0,4.0)（这里用不到z轴的坐标，所以先忽略z轴的存在）。OpenGL在绘制三角形的时候，3个顶点一定有一个顺序，可能是顺时针也可能是逆时针。我们可以看到这里3个顶点的顺序是`顺时针`的，这里我们并没有开启面剔除的状态，开启之后，你就有1/2的概率看不到这个三角形了。<br>
 #### 如何开启面剔除：glEnable(GL_CULL_FACE)，默认情况下为glDisable(GL_CULL_FACE);
-`OpenGL中规定Front face 为逆时针，Back face为顺时针`<br>
+`OpenGL中默认Front face 为逆时针，Back face为顺时针`<br>
 可以看出上面绘制三角形的代码是在后面（Back Face）的。<br>
-运行facing.cpp，我们可以看到剔除背面的效果（facing.cpp只是在Tiangle.cpp的基础上增加了glEnable(GL_CULL_FACE)这一句代码，即开启面剔除，这里会默认剔除掉背面，因为）<br>
+运行facing.cpp，我们可以看到剔除背面的效果（facing.cpp只是在Tiangle.cpp的基础上增加了glEnable(GL_CULL_FACE)这一句代码，即开启面剔除，这里会默认剔除掉背面）<br>
+我们可以使用glCullFace函数来选择要剔除哪一面
+```cpp
+  glCullFace(GL_BACK);
+  glCullFace(GL_FRONT);
+  glCullFace(GL_FRONT_AND_BACK);
+```
+默认逆时针是正面，我们也可以使用glFrontFace来设置正面是顺时针还是逆时针：
+```cpp
+ glFrontFace(GL_CCW); //逆时针是正面
+ glFrontFace(GL_CW);  //顺时针是正面
+```
 
-
+转载自CSDN@RalfNick的[博客](https://blog.csdn.net/u011371324/article/details/77915663)
  
