@@ -69,8 +69,10 @@ INT WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	//opengl init
 	/*下面这里是在上节代码上新增的内容*/
 	glMatrixMode(GL_PROJECTION);	//tell the gpu processer that I would select the projection matrix;
+	// 50.0f为摄像机的视角，800.0f / 600.0f ，窗口宽高比，0.1f为最近能看到哪，1000.0f最远能看到哪
 	gluPerspective(50.0f, 800.0f / 600.0f, 0.1f, 1000.0f);	//set some values to projextion matrix
 	glMatrixMode(GL_MODELVIEW); //tell the gpu processor that I select the model view matrix，设置模型视口矩阵
+	 // 加载一个单位矩阵，即不对模型视口矩阵进行操作
 	glLoadIdentity();
 	/**************************/
 	//set "clearcolor" for background，用这种颜色去擦除颜色缓冲区
